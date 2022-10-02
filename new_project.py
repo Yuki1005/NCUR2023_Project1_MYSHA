@@ -95,10 +95,3 @@ for i in G:
 nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #座標あり
 #nx.draw_networkx(G)        #座標なし
 plt.show()
-
-
-
-
-#　待ち行列の構築
-#　2窓の際の待ち行列
-# 
