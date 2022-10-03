@@ -74,9 +74,7 @@ bbb = input("行き先を入力")
 aaa = str.upper(aaa)
 bbb = str.upper(bbb)
 if aaa == bbb:
-    aaa = input("スタート地点を入力")
     bbb = input("スタート地点とは違う、行き先を入力")
-    aaa = str.upper(aaa)
     bbb = str.upper(bbb)
 
 ##　重み表示    
