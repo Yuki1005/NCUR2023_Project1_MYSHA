@@ -308,19 +308,13 @@ if __name__ == '__main__':
             Vertex.D3,
             Vertex.D4,
             Vertex.D5,
-            Vertex.D6L,
             Vertex.D6,
-            Vertex.D6R,
             Vertex.D7,
             Vertex.D8,
             Vertex.D9,
             Vertex.D10,
-            Vertex.D11L,
             Vertex.D11,
-            Vertex.D11R,
-            Vertex.D12L,
             Vertex.D12,
-            Vertex.D12R,
             Vertex.I53,
             Vertex.I54,
             Vertex.I55,
@@ -568,14 +562,6 @@ if __name__ == '__main__':
         to_vertex=Vertex.R,
         weight=421)
     graph.add_edge_by_vertices(
-        from_vertex=Vertex.D6L,
-        to_vertex=Vertex.A,
-        weight=1388)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D6L,
-        to_vertex=Vertex.R,
-        weight=462)
-    graph.add_edge_by_vertices(
         from_vertex=Vertex.D6,
         to_vertex=Vertex.A,
         weight=1386)
@@ -583,14 +569,6 @@ if __name__ == '__main__':
         from_vertex=Vertex.D6,
         to_vertex=Vertex.R,
         weight=464)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D6R,
-        to_vertex=Vertex.A,
-        weight=1372)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D6R,
-        to_vertex=Vertex.R,
-        weight=478)
     graph.add_edge_by_vertices(
         from_vertex=Vertex.D7,
         to_vertex=Vertex.A,
@@ -624,14 +602,6 @@ if __name__ == '__main__':
         to_vertex=Vertex.R,
         weight=864)
     graph.add_edge_by_vertices(
-        from_vertex=Vertex.D11L,
-        to_vertex=Vertex.A,
-        weight=952)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D11L,
-        to_vertex=Vertex.R,
-        weight=898)
-    graph.add_edge_by_vertices(
         from_vertex=Vertex.D11,
         to_vertex=Vertex.A,
         weight=902)
@@ -640,22 +610,6 @@ if __name__ == '__main__':
         to_vertex=Vertex.R,
         weight=948)
     graph.add_edge_by_vertices(
-        from_vertex=Vertex.D11R,
-        to_vertex=Vertex.A,
-        weight=894)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D11R,
-        to_vertex=Vertex.R,
-        weight=956)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D12L,
-        to_vertex=Vertex.A,
-        weight=867)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D12L,
-        to_vertex=Vertex.R,
-        weight=983)
-    graph.add_edge_by_vertices(
         from_vertex=Vertex.D12,
         to_vertex=Vertex.A,
         weight=816)
@@ -663,14 +617,6 @@ if __name__ == '__main__':
         from_vertex=Vertex.D12,
         to_vertex=Vertex.R,
         weight=1034)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D12R,
-        to_vertex=Vertex.A,
-        weight=806)
-    graph.add_edge_by_vertices(
-        from_vertex=Vertex.D12R,
-        to_vertex=Vertex.R,
-        weight=1044)
     graph.add_edge_by_vertices(
         from_vertex=Vertex.I58,
         to_vertex=Vertex.AG,
