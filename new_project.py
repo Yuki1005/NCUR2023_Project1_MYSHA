@@ -117,4 +117,5 @@ print(nx.single_source_dijkstra_path_length(G, aaa))
 # 平均kts(knot)を測る。1kts = 0.51477m/s
 # 距離データをもう一度見直し
 # 待ち行列プログラム
-# #1をもとに各ゲートから離陸地点までの平均到達時間を予想、算出
+# #1をもとに各ゲートから離陸地点までの平均到達時間を予想、
+koiudhinn
