@@ -109,9 +109,10 @@ for i in G:
         color_map.append('crimson')
     else: color_map.append('skyblue')   
 
-nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #座標あり
+print(nx.single_source_dijkstra_path_length(G, aaa))
+#nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #座標あり
 #nx.draw_networkx(G)        #座標なし
-plt.show()
+#plt.show()
 
 # 平均kts(knot)を測る。1kts = 0.51477m/s
 # 距離データをもう一度見直し
