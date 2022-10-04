@@ -114,7 +114,6 @@ nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #�
 plt.show()
 
 # 平均kts(knot)を測る。1kts = 0.51477m/s
-# GitHubを入れてもらう(共有の効率化のため)
 # 距離データをもう一度見直し
 # 待ち行列プログラム
 # #1をもとに各ゲートから離陸地点までの平均到達時間を予想、算出
