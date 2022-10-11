@@ -1,3 +1,9 @@
-import pandas as pd
+import csv
 end_time = [0,0]
-pattern = pd.read_csv("")
+rows = []
+with open("") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        rows.append(row)
+
+print(rows)
