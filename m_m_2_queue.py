@@ -1,9 +1,4 @@
-import csv
+import pandas as pd
 end_time = [0,0]
-rows = []
-with open("a.csv") as f:
-    reader = csv.reader(f)
-    for row in reader:
-        rows.append(row)
-
-print(rows)
+pattern1 = pd.read_csv("a.csv")
+print(pattern1.shape)
