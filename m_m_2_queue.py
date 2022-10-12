@@ -1,8 +1,10 @@
 import csv
 import pandas as pd
 import datetime as dt
+import networkx as nx
 
 end_time = [0,0]
+G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
 pattern1 = pd.read_csv("path.csv")
 with open("path.csv",encoding="utf_8") as f:
@@ -17,3 +19,5 @@ for i in range(len(pattern1)):
     for j, e in enumerate( end_time[1:], 1 ):
         if mi > e:
             counter_no, mi = j, e
+    
+    
