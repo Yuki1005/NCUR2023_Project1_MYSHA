@@ -17,4 +17,3 @@ for i in range(len(pattern1)):
     for j, e in enumerate( end_time[1:], 1 ):
         if mi > e:
             counter_no, mi = j, e
-    
