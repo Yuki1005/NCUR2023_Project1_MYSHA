@@ -32,5 +32,5 @@ for i in range(len(pattern1)):
     end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))
     wait_time = start_time - arrival_time
     
-    print( 'No{:>2d} {:>4.0f} {:>4.0f}    {} {:<5} {:>2d} {:>4.0f} {:>4.0f}'\
-        .format( i, arrival_time, start_time, counter_no+1, i, i, end_time[counter_no], wait_time ) )
+    print( '{}  {}  Gate[{}] {} {:<5} {:>2d} {:>4.0f} {:>4.0f}'\
+        .format(line[i+1][0],line[i+1][1],line[i+1][2], counter_no+1, i, i, end_time[counter_no], wait_time ) )
