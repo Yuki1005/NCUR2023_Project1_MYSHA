@@ -37,7 +37,7 @@ for i in range(len(pattern1)):
         print(line[i+1][0],line[i+1][1],"欠航")
     else:
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
-        end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 
+        end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55
         interval = end_time[counter_no] - end_time2[counter_no]
         
         if interval < 240:
