@@ -6,6 +6,7 @@ import math
 
 end_time = [0,0]
 end_time2 = [0,0]
+wait_time_heikin = 0
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
 pattern1 = pd.read_csv("path.csv")
@@ -44,10 +45,11 @@ for i in range(len(pattern1)):
         else:
             end_time[counter_no] = end_time[counter_no]
         
-        aida = 
+        wait_time = (int(end_time[counter_no]) - int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 -start_time)/60
         big_hand = str(int(end_time[counter_no])//3600)
         little_hand = str(math.ceil(int(end_time[counter_no])%3600/60) + 3)
         end_time2[counter_no] = end_time[counter_no]
+        wait_time_heikin += wait_time
         
         if len(little_hand) == 1:
             runway = big_hand + ":0" + little_hand
@@ -55,4 +57,6 @@ for i in range(len(pattern1)):
             runway = big_hand + ":" + little_hand
         
         print( '{}  {}  Gate[{}] Runway[{}] 滑走路到着時間{} {}'\
-            .format(line[i+1][0],line[i+1][1],aaa, bbb,runway,) )
+            .format(line[i+1][0],line[i+1][1],aaa, bbb,runway,math.ceil(wait_time)))
+
+print(wait_time_heikin/(i+1)*60)
