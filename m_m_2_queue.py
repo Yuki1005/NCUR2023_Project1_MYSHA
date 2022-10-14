@@ -2,13 +2,8 @@ import csv
 import pandas as pd
 import networkx as nx
 
-aaa = input("スタート地点を入力")
-bbb = input("行き先を入力")
-aaa = str.upper(aaa)
-bbb = str.upper(bbb)
-if aaa == bbb:
-    bbb = input("スタート地点とは違う、行き先を入力")
-    bbb = str.upper(bbb)
+
+bbb = "X"
 
 end_time = [0,0]
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
@@ -22,6 +17,11 @@ for i in range(len(pattern1)):
     aa1 = line[i+1][0].replace(":"," ").split()
     arrival_time = int(aa1[1])+int(aa1[0])*60
     
+    if line[i+1][2] in ["53","54","55","56","57","58"]:
+        aaa = str("I" + line[i+1][2])
+    else:
+        aaa = str("D" + line[i+1][2])
+    
     counter_no, mi = 0, end_time[0]
     for j, e in enumerate( end_time[1:], 1 ):
         if mi > e:
@@ -33,4 +33,4 @@ for i in range(len(pattern1)):
     wait_time = start_time - arrival_time
     
     print( '{}  {}  Gate[{}] {} {:<5} {:>2d} {:>4.0f} {:>4.0f}'\
-        .format(line[i+1][0],line[i+1][1],line[i+1][2], counter_no+1, i, i, end_time[counter_no], wait_time ) )
+        .format(line[i+1][0],line[i+1][1],aaa, counter_no+1, i, i, end_time[counter_no], wait_time ) )
