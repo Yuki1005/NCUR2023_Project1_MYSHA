@@ -37,7 +37,7 @@ for i in range(len(pattern1)):
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
         end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55
         wait_time = start_time - arrival_time
-        runway = str(int(end_time[counter_no])//3600)+":"+str(int(end_time[counter_no])%3600)
+        runway = str(int(end_time[counter_no])//3600)+":"+str(int(end_time[counter_no])%3600/60)
         
         print( '{}  {}  Gate[{}] Runway[{}] {}'\
             .format(line[i+1][0],line[i+1][1],aaa, bbb,  runway) )
