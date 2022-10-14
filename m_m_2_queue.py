@@ -3,7 +3,6 @@ import pandas as pd
 import networkx as nx
 import math
 
-
 end_time = [0,0]
 end_time2 = [0,0]
 wait_time_heikin = 0
@@ -68,3 +67,4 @@ print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
 
 
 #定刻、到着先、ゲート、滑走路、滑走路到着時間、遅延
+#CSV出力方法、たきこちゃん
