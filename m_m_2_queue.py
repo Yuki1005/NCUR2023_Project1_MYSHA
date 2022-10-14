@@ -73,4 +73,4 @@ print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
 
 #CSV出力方法、たきこちゃん
 #パワポ作成
-#風向きに合わせたもの kazamuki[1or0] if文で
+#風向きに合わせたもの kazamuki[1or0] if文で x s h an に
