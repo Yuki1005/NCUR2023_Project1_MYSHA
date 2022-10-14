@@ -9,8 +9,8 @@ end_time2 = [0,0]
 wait_time_heikin = 0
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
-pattern1 = pd.read_csv("landing.csv")
-with open("landing.csv",encoding="utf_8") as f:
+pattern1 = pd.read_csv("take_off.csv")
+with open("take_off.csv",encoding="utf_8") as f:
     reader = csv.reader(f)
     line=[row for row in reader]
 
