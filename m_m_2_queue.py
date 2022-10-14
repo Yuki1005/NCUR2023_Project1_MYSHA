@@ -3,8 +3,6 @@ import pandas as pd
 import networkx as nx
 
 
-bbb = "X"
-
 end_time = [0,0]
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
@@ -27,10 +25,13 @@ for i in range(len(pattern1)):
         if mi > e:
             counter_no, mi = j, e
     
-    
+    if counter_no == 0:
+        bbb = "X"
+    elif counter_no == 1:
+        bbb = "S"
     start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
     end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))
     wait_time = start_time - arrival_time
     
-    print( '{}  {}  Gate[{}] {} {:<5} {:>2d} {:>4.0f} {:>4.0f}'\
-        .format(line[i+1][0],line[i+1][1],aaa, counter_no+1, i, i, end_time[counter_no], wait_time ) )
+    print( '{}  {}  Gate[{}] Runway[{}] {} {} {} {}'\
+        .format(line[i+1][0],line[i+1][1],aaa, bbb, i, i, end_time[counter_no], wait_time ) )
