@@ -63,7 +63,9 @@ for i in range(len(pattern1)):
         
         print( '{} {} {} {} {} {}'\
             .format(str(line[i+1][0]),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
-        
+
+data.append([])
+data.append(["平均遅延時間",wait_time_heikin/(i+1)*60,"[s]"])
 df_list = pd.DataFrame(data, columns=["定刻","行先","ゲート番号","滑走路","滑走路到着時間","遅延"])
 df_list.to_csv("data.csv", index=False)
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
