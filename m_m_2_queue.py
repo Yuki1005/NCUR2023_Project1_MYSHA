@@ -5,6 +5,7 @@ import math
 
 
 end_time = [0,0]
+end_time2 = [0,0]
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
 pattern1 = pd.read_csv("path.csv")
@@ -39,6 +40,7 @@ for i in range(len(pattern1)):
         wait_time = start_time - arrival_time
         big_hand = str(int(end_time[counter_no])//3600)
         little_hand = str(math.ceil(int(end_time[counter_no])%3600/60) + 3)
+        end_time2[counter_no] = end_time[counter_no]
         
         if len(little_hand) == 1:
             runway = big_hand + ":0" + little_hand
