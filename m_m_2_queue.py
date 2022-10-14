@@ -1,4 +1,5 @@
 import csv
+from unittest import skip
 import pandas as pd
 import networkx as nx
 
@@ -29,9 +30,12 @@ for i in range(len(pattern1)):
         bbb = "X"
     elif counter_no == 1:
         bbb = "S"
-    start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
-    end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))
-    wait_time = start_time - arrival_time
-    
-    print( '{}  {}  Gate[{}] Runway[{}] {} {} {} {}'\
-        .format(line[i+1][0],line[i+1][1],aaa, bbb, i, i, end_time[counter_no], wait_time ) )
+    if aaa == "D100":
+        print(line[i+1][0],line[i+1][1],"欠航")
+    else:
+        start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
+        end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))
+        wait_time = start_time - arrival_time
+        
+        print( '{}  {}  Gate[{}] Runway[{}] {} {}'\
+            .format(line[i+1][0],line[i+1][1],aaa, bbb,  end_time[counter_no], wait_time ) )
