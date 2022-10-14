@@ -65,19 +65,15 @@ class Vertex:
     D3: VertexStr = 'D3'
     D4: VertexStr = 'D4'
     D5: VertexStr = 'D5'
-    D6L: VertexStr = 'D6L'
     D6: VertexStr = 'D6'
-    D6R: VertexStr = 'D6R'
     D7: VertexStr = 'D7'
     D8: VertexStr = 'D8'
     D9: VertexStr = 'D9'
     D10: VertexStr = 'D10'
-    D11L: VertexStr = 'D11L'
     D11: VertexStr = 'D11'
-    D11R: VertexStr = 'D11R'
-    D12L: VertexStr = 'D12L'
     D12: VertexStr = 'D12'
-    D12R: VertexStr = 'D12R'
+    D81: VertexStr = 'D81'
+    D82: VertexStr = 'D82'
     I53: VertexStr = 'I53'
     I54: VertexStr = 'I54'
     I55: VertexStr = 'I55'
@@ -315,6 +311,8 @@ if __name__ == '__main__':
             Vertex.D10,
             Vertex.D11,
             Vertex.D12,
+            Vertex.D81,
+            Vertex.D82,
             Vertex.I53,
             Vertex.I54,
             Vertex.I55,
@@ -665,6 +663,14 @@ if __name__ == '__main__':
         from_vertex=Vertex.I53,
         to_vertex=Vertex.AJ,
         weight=1245)
+    graph.add_edge_by_vertices(
+        from_vertex=Vertex.D81,
+        to_vertex=Vertex.A,
+        weight=102)
+    graph.add_edge_by_vertices(
+        from_vertex=Vertex.D82,
+        to_vertex=Vertex.A,
+        weight=102)
     
     if(aaa == ("A" or "a")):
         cc = Vertex.A
@@ -760,12 +766,8 @@ if __name__ == '__main__':
         cc = Vertex.D4
     elif(aaa == ("D5" or "d5")):
         cc = Vertex.D5
-    elif(aaa == ("D6L" or "d6l")):
-        cc = Vertex.D6L
     elif(aaa == ("D6" or "d6")):
         cc = Vertex.D6
-    elif(aaa == ("D6R" or "d6r")):
-        cc = Vertex.D6R
     elif(aaa == ("D7" or "d7")):
         cc = Vertex.D7
     elif(aaa == ("D8" or "d8")):
@@ -774,18 +776,14 @@ if __name__ == '__main__':
         cc = Vertex.D9
     elif(aaa == ("D10" or "d10")):
         cc = Vertex.D10
-    elif(aaa == ("D11L" or "d11l")):
-        cc = Vertex.D11L
     elif(aaa == ("D11" or "d11")):
         cc = Vertex.D11
-    elif(aaa == ("D11R" or "d11r")):
-        cc = Vertex.D11R
-    elif(aaa == ("D12L" or "d12l")):
-        cc = Vertex.D12L
     elif(aaa == ("D12" or "d12")):
         cc = Vertex.D12
-    elif(aaa == ("D12R" or "d12r")):
-        cc = Vertex.D12R
+    elif(aaa == ("D81" or "d81")):
+        cc = Vertex.D81
+    elif(aaa == ("D82" or "d82")):
+        cc = Vertex.D82
     elif(aaa == ("I53" or "i53")):
         cc = Vertex.I53
     elif(aaa == ("I54" or "i54")):
@@ -892,12 +890,8 @@ if __name__ == '__main__':
         dd = Vertex.D4
     elif(bbb == ("D5" or "d5")):
         dd = Vertex.D5
-    elif(bbb == ("D6L" or "d6l")):
-        dd = Vertex.D6L
     elif(bbb == ("D6" or "d6")):
         dd = Vertex.D6
-    elif(bbb == ("D6R" or "d6r")):
-        dd = Vertex.D6R
     elif(bbb == ("D7" or "d7")):
         dd = Vertex.D7
     elif(bbb == ("D8" or "d8")):
@@ -906,18 +900,14 @@ if __name__ == '__main__':
         dd = Vertex.D9
     elif(bbb == ("D10" or "d10")):
         dd = Vertex.D10
-    elif(bbb == ("D11L" or "d11l")):
-        dd = Vertex.D11L
     elif(bbb == ("D11" or "d11")):
         dd = Vertex.D11
-    elif(bbb == ("D11R" or "d11r")):
-        dd = Vertex.D11R
-    elif(bbb == ("D12L" or "d12l")):
-        dd = Vertex.D12L
     elif(bbb == ("D12" or "d12")):
         dd = Vertex.D12
-    elif(bbb == ("D12R" or "d12r")):
-        dd = Vertex.D12R
+    elif(bbb == ("D81" or "d81")):
+        dd = Vertex.D81
+    elif(bbb == ("D82" or "d82")):
+        dd = Vertex.D82
     elif(bbb == ("I53" or "i53")):
         dd = Vertex.I53
     elif(bbb == ("I54" or "i54")):
