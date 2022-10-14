@@ -71,7 +71,6 @@ df_list.to_csv("m_m_2.csv", index=False,encoding="shift_jis")
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
 
 
-#定刻、到着先、ゲート、滑走路、滑走路到着時間、遅延
 #CSV出力方法、たきこちゃん
 #パワポ作成
 #風向きに合わせたもの kazamuki[1or0] if文で
