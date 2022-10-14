@@ -66,6 +66,8 @@ pos["D9"]=(760,197)
 pos["D10"]=(1040,197)
 pos["D11"]=(1320,197)
 pos["D12"]=(1600,197)
+pos["D81"]=(1780,197)
+pos["D82"]=(1960,197)
 pos["I53"]=(-1600,-700)
 pos["I54"]=(-960,-700)
 pos["I55"]=(-320,-700)
@@ -109,12 +111,11 @@ for i in G:
         color_map.append('crimson')
     else: color_map.append('skyblue')   
 
-print(nx.single_source_dijkstra_path_length(G, aaa))
-#nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #座標あり
+##print(nx.single_source_dijkstra_path_length(G, aaa))
+nx.draw_networkx(G,pos,edge_color=edge_color_list,node_color= color_map)     #座標あり
 #nx.draw_networkx(G)        #座標なし
-#plt.show()
+plt.show()
 
-# 平均kts(knot)を測る。1kts = 0.51477m/s
-# 距離データをもう一度見直し
-# 待ち行列プログラム
-# #1をもとに各ゲートから離陸地点までの平均到達時間を予想、
+##　a.txt　の数値全て+90s
+##　パワポ作成
+##
