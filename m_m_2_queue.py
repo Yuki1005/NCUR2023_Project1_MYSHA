@@ -28,8 +28,9 @@ for i in range(len(pattern1)):
     
     if counter_no == 0:
         bbb = "X"
-    elif counter_no == 1:
+    else:
         bbb = "S"
+    
     if aaa == "D100":
         print(line[i+1][0],line[i+1][1],"欠航")
     else:
