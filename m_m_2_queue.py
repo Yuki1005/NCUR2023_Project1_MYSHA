@@ -37,7 +37,14 @@ for i in range(len(pattern1)):
     else:
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
         end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55
-        wait_time = start_time - arrival_time
+        interval = end_time[counter_no] - end_time2[counter_no]
+        
+        if interval < 240:
+            end_time[counter_no] = end_time2[counter_no] + 240
+        else:
+            end_time[counter_no] = end_time[counter_no]
+        
+        aida = 
         big_hand = str(int(end_time[counter_no])//3600)
         little_hand = str(math.ceil(int(end_time[counter_no])%3600/60) + 3)
         end_time2[counter_no] = end_time[counter_no]
@@ -47,5 +54,5 @@ for i in range(len(pattern1)):
         else:
             runway = big_hand + ":" + little_hand
         
-        print( '{}  {}  Gate[{}] Runway[{}] {}'\
-            .format(line[i+1][0],line[i+1][1],aaa, bbb,  runway) )
+        print( '{}  {}  Gate[{}] Runway[{}] 滑走路到着時間{} {}'\
+            .format(line[i+1][0],line[i+1][1],aaa, bbb,runway,) )
