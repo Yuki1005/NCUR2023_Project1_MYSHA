@@ -14,7 +14,7 @@ with open("path.csv",encoding="utf_8") as f:
 
 for i in range(len(pattern1)):
     aa1 = line[i+1][0].replace(":"," ").split()
-    arrival_time = int(aa1[1])+int(aa1[0])*60
+    arrival_time = int(aa1[1])*60+int(aa1[0])*3600
     
     if line[i+1][2] in ["53","54","55","56","57","58"]:
         aaa = str("I" + line[i+1][2])
@@ -35,8 +35,9 @@ for i in range(len(pattern1)):
         print(line[i+1][0],line[i+1][1],"欠航")
     else:
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
-        end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))
+        end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55
         wait_time = start_time - arrival_time
+        runway = str(int(end_time[counter_no])//3600)+":"+str(int(end_time[counter_no])%3600)
         
-        print( '{}  {}  Gate[{}] Runway[{}] {} {}'\
-            .format(line[i+1][0],line[i+1][1],aaa, bbb,  end_time[counter_no], wait_time ) )
+        print( '{}  {}  Gate[{}] Runway[{}] {}'\
+            .format(line[i+1][0],line[i+1][1],aaa, bbb,  runway) )
