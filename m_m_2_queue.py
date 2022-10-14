@@ -3,6 +3,7 @@ import pandas as pd
 import networkx as nx
 import math
 
+data = []
 end_time = [0,0]
 end_time2 = [0,0]
 wait_time_heikin = 0
@@ -34,6 +35,7 @@ for i in range(len(pattern1)):
     
     if aaa == "D100":
         print(line[i+1][0],line[i+1][1],"欠航")
+        data.append([str(line[i+1][0]),str(line[i+1][1]),"欠航"])
     else:
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
         end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G,aaa,bbb))/5.55
@@ -57,12 +59,13 @@ for i in range(len(pattern1)):
             runway = str(big_hand) + ":0" + str(little_hand)
         else:
             runway = str(big_hand) + ":" + str(little_hand)
+        data.append([str(line[i+1][0]),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))])
         
         print( '{} {} {} {} {} {}'\
             .format(str(line[i+1][0]),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
         
-        #data = [str(line[i+1][0]),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))]
-
+df_list = pd.DataFrame(data, columns=["定刻","行先","ゲート番号","滑走路","滑走路到着時間","遅延"])
+df_list.to_csv("data.csv", index=False)
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
 
 
