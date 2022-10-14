@@ -4,8 +4,8 @@ import networkx as nx
 import math
 
 data = []
-end_time = [0,0]
-end_time2 = [0,0]
+end_time = [0]
+end_time2 = [0]
 wait_time_heikin = 0
 G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph) 
 
@@ -67,10 +67,5 @@ for i in range(len(pattern1)):
 data.append([])
 data.append(["平均遅延時間",wait_time_heikin/(i+1)*60,"[s]"])
 df_list = pd.DataFrame(data, columns=["定刻","行先","ゲート番号","滑走路","滑走路到着時間","遅延"])
-df_list.to_csv("m_m_2.csv", index=False,encoding="shift jis")
+df_list.to_csv("m_m_1.csv", index=False,encoding="shift jis")
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
-
-
-#定刻、到着先、ゲート、滑走路、滑走路到着時間、遅延
-#CSV出力方法、たきこちゃん
-#パワポ作成
