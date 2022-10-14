@@ -46,17 +46,22 @@ for i in range(len(pattern1)):
             end_time[counter_no] = end_time[counter_no]
         
         wait_time = (end_time[counter_no] - int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 -start_time)/60
-        big_hand = str(int(end_time[counter_no])//3600)
-        little_hand = str(math.ceil(int(end_time[counter_no])%3600/60)+3)
+        big_hand = int(end_time[counter_no])//3600
+        little_hand = math.ceil(int(end_time[counter_no])%3600/60)+3
+        if little_hand == 60:
+            big_hand += 1
+            little_hand = 0
         end_time2[counter_no] = end_time[counter_no]
         wait_time_heikin += wait_time
         
-        if len(little_hand) == 1:
-            runway = big_hand + ":0" + little_hand
+        if len(str(little_hand)) == 1:
+            runway = str(big_hand) + ":0" + str(little_hand)
         else:
-            runway = big_hand + ":" + little_hand
+            runway = str(big_hand) + ":" + str(little_hand)
         
-        print( '{}  {}  Gate[{}] Runway[{}] 滑走路到着時間{} 遅延{}[分]'\
+        print( '{} {} {} {} {} {}'\
             .format(line[i+1][0],line[i+1][1],aaa, bbb,runway,math.ceil(wait_time)))
 
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
+
+#定刻、到着先、ゲート、滑走路、滑走路到着時間、遅延
