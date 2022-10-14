@@ -67,5 +67,5 @@ for i in range(len(pattern1)):
 data.append([])
 data.append(["平均遅延時間",wait_time_heikin/(i+1)*60,"[s]"])
 df_list = pd.DataFrame(data, columns=["定刻","行先","ゲート番号","滑走路","滑走路到着時間","遅延"])
-df_list.to_csv("m_m_1.csv", index=False,encoding="shift jis")
+df_list.to_csv("m_m_1.csv", index=False,encoding="shift_jis")
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
