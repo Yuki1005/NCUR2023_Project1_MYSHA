@@ -34,11 +34,12 @@ for i in range(len(pattern1)):
         
     if int(len(line[i+1][3])) > 0:
         kazamuki += 1
+        
     if kazamuki%2 == 1:
         if counter_no == 0:
-            bbb = "X"
-        else:
             bbb = "S"
+        else:
+            bbb = "X"
 
         if len(str(line[i+1][2])) == 0:
             start_time = arrival_time
