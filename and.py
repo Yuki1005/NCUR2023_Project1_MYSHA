@@ -36,8 +36,8 @@ for i in range(len(pattern1)):
                 end_time[counter_no] = end_time2[counter_no] + 120
         else:
             end_time[counter_no] = end_time[counter_no]
-        big_hand = end_time[counter_no]//3600
-        little_hand = math.ceil(end_time[counter_no]) % 3600/60
+        big_hand = int(end_time[counter_no]//3600)
+        little_hand = math.ceil(end_time[counter_no] % 3600/60)
         if little_hand >= 60:
             big_hand += 1
             little_hand = little_hand - 60
@@ -71,7 +71,7 @@ for i in range(len(pattern1)):
                 end_time[counter_no] = end_time[counter_no]
 
             wait_time = (end_time[counter_no] - int(nx.dijkstra_path_length(G, aaa, bbb))/5.55 - start_time)/60
-            big_hand = end_time[counter_no]//3600
+            big_hand = int(end_time[counter_no]//3600)
             little_hand = math.ceil(end_time[counter_no] % 3600/60) +3
             if little_hand >= 60:
                 big_hand += 1

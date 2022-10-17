@@ -39,7 +39,7 @@ for i in range(len(pattern1)):
     else:
         jikan = int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 + 180
         start_time = arrival_time
-        end_time[counter_no] = int(start_time) + jikan
+        end_time[counter_no] = start_time + jikan
         interval = end_time[counter_no] - end_time2[counter_no]
         
         if interval < 120:
@@ -48,8 +48,8 @@ for i in range(len(pattern1)):
             end_time[counter_no] = end_time[counter_no]
         
         wait_time = (end_time[counter_no] - jikan -start_time)/60
-        big_hand = (int(end_time[counter_no]))//3600
-        little_hand = math.ceil(int(end_time[counter_no])%3600/60)
+        big_hand = int((end_time[counter_no])//3600)
+        little_hand = math.ceil(end_time[counter_no]%3600/60)
         if little_hand >= 60:
             big_hand += 1
             little_hand = little_hand -60
