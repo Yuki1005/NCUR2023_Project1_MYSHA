@@ -14,6 +14,7 @@ wait_time_heikin = 0
 wait_time_takeoff = 0
 wait_time_arrive = 0
 
+kankaku = int(input("何分、間隔を設けるか"))*60
 
 G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
 pattern1 = pd.read_csv("queue_final_data.csv")
@@ -46,8 +47,8 @@ for i in range(len(pattern1)):
             end_time[counter_no] = start_time
             interval = end_time[counter_no] - end_time2[counter_no]
             
-            if interval < 120:
-                    end_time[counter_no] = end_time2[counter_no] + 120
+            if interval < kankaku:
+                    end_time[counter_no] = end_time2[counter_no] + kankaku
             else:
                 end_time[counter_no] = end_time[counter_no]
             big_hand = int(end_time[counter_no]//3600)
@@ -85,8 +86,8 @@ for i in range(len(pattern1)):
                 end_time[counter_no] = start_time + jikan
                 interval = end_time[counter_no] - end_time2[counter_no]
                 
-                if interval < 120:
-                    end_time[counter_no] = end_time2[counter_no] + 120
+                if interval < kankaku:
+                    end_time[counter_no] = end_time2[counter_no] + kankaku
                 else:
                     end_time[counter_no] = end_time[counter_no]
                 
@@ -129,8 +130,8 @@ for i in range(len(pattern1)):
             end_time[counter_no] = start_time
             interval = end_time[counter_no] - end_time2[counter_no]
             
-            if interval < 120:
-                    end_time[counter_no] = end_time2[counter_no] + 120
+            if interval < kankaku:
+                    end_time[counter_no] = end_time2[counter_no] + kankaku
             else:
                 end_time[counter_no] = end_time[counter_no]
             big_hand = int(end_time[counter_no]//3600)
@@ -168,8 +169,8 @@ for i in range(len(pattern1)):
                 end_time[counter_no] = start_time + jikan
                 interval = end_time[counter_no] - end_time2[counter_no]
                 
-                if interval < 120:
-                    end_time[counter_no] = end_time2[counter_no] + 120
+                if interval < kankaku:
+                    end_time[counter_no] = end_time2[counter_no] + kankaku
                 else:
                     end_time[counter_no] = end_time[counter_no]
                 
