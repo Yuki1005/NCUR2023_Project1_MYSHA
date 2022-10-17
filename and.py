@@ -6,7 +6,9 @@ import math
 data = []
 end_time = [0, 0]
 end_time2 = [0, 0]
+l = 0
 wait_time_heikin = 0
+wait_time_takeoff = 0
 G = nx.read_weighted_edgelist("dijkstra.txt", create_using=nx.DiGraph)
 
 pattern1 = pd.read_csv("and_data.csv")
@@ -46,9 +48,11 @@ for i in range(len(pattern1)):
         else:
             runway = str(big_hand) + ":" + str(little_hand)
         end_time2[counter_no] = end_time[counter_no]
-        wait_time = math.ceil((end_time[counter_no] - arrival_time)/60)
+        wait_time = (end_time[counter_no] - arrival_time)/60
         
         data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),wait_time])
+        wait_time_heikin += wait_time
+        l += 1
         
         
     else:
@@ -60,8 +64,9 @@ for i in range(len(pattern1)):
         if aaa == "D100":
             print(line[i+1][0],"",line[i+1][1],"","欠航")
             data.append([str(line[i+1][0]),"",str(line[i+1][1]),"","欠航"])
+            
         else:
-            jikan = int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 + 180
+            jikan = int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 + 120
             start_time = arrival_time
             end_time[counter_no] = start_time + jikan
             interval = end_time[counter_no] - end_time2[counter_no]
@@ -84,22 +89,25 @@ for i in range(len(pattern1)):
 
             end_time2[counter_no] = end_time[counter_no]
             wait_time_heikin += wait_time
+            wait_time_takeoff += wait_time
             
             go_test = (arrival_time +(math.ceil(wait_time)*60))
             if len(str(math.ceil(int(go_test)%3600/60))) == 1:
                 go_time = str(go_test//3600) + ":0" + str(math.ceil(int(go_test)%3600/60))
             else:
                 go_time = str(go_test//3600) + ":" + str(math.ceil(int(go_test)%3600/60))
+            l += 1
 
 
-            data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbb),runway,str(math.ceil(wait_time))])
+            data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbb),runway,wait_time])
             
             print( '{} {} {} {} {} {} {}'\
                 .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
 
 
 data.append([])
-data.append(["平均遅延時間", wait_time_heikin/(i+1)*60, "[s]"])
+data.append(["平均遅延時間", wait_time_heikin/l*60, "[s]"])
+data.append(["平均遅延時間", wait_time_takeoff/l*60, "[s]"])
 df_list = pd.DataFrame(
     data, columns=["定刻", "出発時間", "行先","","ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
 df_list.to_csv("and2.csv", index=False, encoding="shift_jis")
