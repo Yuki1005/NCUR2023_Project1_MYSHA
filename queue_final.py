@@ -10,10 +10,10 @@ l = 0
 takeoff = 0
 wait_time_heikin = 0
 wait_time_takeoff = 0
-G = nx.read_weighted_edgelist("dijkstra.txt", create_using=nx.DiGraph)
+G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
 
-pattern1 = pd.read_csv("and_data.csv")
-with open("and_data.csv", encoding="utf_8") as f:
+pattern1 = pd.read_csv("queue_final_data.csv")
+with open("queue_final_data.csv", encoding="utf_8") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
@@ -112,6 +112,6 @@ data.append(["平均遅延時間", wait_time_heikin/l*60, "[s]"])
 data.append(["平均遅延時間", wait_time_takeoff/takeoff*60, "[s]"])
 df_list = pd.DataFrame(
     data, columns=["定刻", "出発時間", "行先","","ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
-df_list.to_csv("and2.csv", index=False, encoding="shift_jis")
+df_list.to_csv("queue_final1.csv", index=False, encoding="shift_jis")
 print("平均遅延時間", wait_time_heikin/l*60, "[s]")
 print("平均出発遅延時間", wait_time_takeoff/takeoff*60, "[s]")

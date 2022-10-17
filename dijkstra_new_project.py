@@ -5,8 +5,8 @@ import pylab
 import matplotlib.pyplot as plt
 
 #　辺を設定する．
-G = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.DiGraph)     #有向グラフ
-G1 = nx.read_weighted_edgelist("dijkstra.txt",create_using=nx.Graph)      #無向グラフ
+G = nx.read_weighted_edgelist("dijkstra_data.txt",create_using=nx.DiGraph)     #有向グラフ
+G1 = nx.read_weighted_edgelist("dijkstra_data.txt",create_using=nx.Graph)      #無向グラフ
 
 
 #　座標を設定する．indexがid，代入している値が座標．
