@@ -86,17 +86,15 @@ for i in range(len(pattern1)):
 
             go_test = (arrival_time + (math.ceil(wait_time)*60))
             if len(str(math.ceil(int(go_test) % 3600/60))) == 1:
-                go_time = str(go_test//3600) + ":0" + \
-                    str(math.ceil(int(go_test) % 3600/60))
+                go_time = str(go_test//3600) + ":0" + str(math.ceil(int(go_test) % 3600/60))
             else:
-                go_time = str(go_test//3600) + ":" + \
-                    str(math.ceil(int(go_test) % 3600/60))
+                go_time = str(go_test//3600) + ":" + str(math.ceil(int(go_test) % 3600/60))
 
             data.append([str(line[i+1][0]), str(go_time), str(line[i+1][1]),"",
                         str(aaa), str(bbb), runway, str(math.ceil(wait_time))])
 
-            print('{} {} {} {} {} {} {} {}'
-                .format(str(line[i+1][0]), str(go_time), str(line[i+1][1]),"", str(aaa), str(bbb), runway, str(math.ceil(wait_time))))
+            print('{} {} {} {} {} {} {}'
+                .format(str(line[i+1][0]), str(go_time), str(line[i+1][1]),str(aaa), str(bbb), runway, str(math.ceil(wait_time))))
 
 data.append([])
 data.append(["平均遅延時間", wait_time_heikin/(i+1)*60, "[s]"])
