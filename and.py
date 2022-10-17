@@ -7,6 +7,7 @@ data = []
 end_time = [0, 0]
 end_time2 = [0, 0]
 l = 0
+takeoff = 0
 wait_time_heikin = 0
 wait_time_takeoff = 0
 G = nx.read_weighted_edgelist("dijkstra.txt", create_using=nx.DiGraph)
@@ -97,6 +98,7 @@ for i in range(len(pattern1)):
             else:
                 go_time = str(go_test//3600) + ":" + str(math.ceil(int(go_test)%3600/60))
             l += 1
+            takeoff += 1
 
 
             data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbb),runway,wait_time])
@@ -107,8 +109,9 @@ for i in range(len(pattern1)):
 
 data.append([])
 data.append(["平均遅延時間", wait_time_heikin/l*60, "[s]"])
-data.append(["平均遅延時間", wait_time_takeoff/l*60, "[s]"])
+data.append(["平均遅延時間", wait_time_takeoff/takeoff*60, "[s]"])
 df_list = pd.DataFrame(
     data, columns=["定刻", "出発時間", "行先","","ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
 df_list.to_csv("and2.csv", index=False, encoding="shift_jis")
-print("平均遅延時間", wait_time_heikin/(i+1)*60, "[s]")
+print("平均遅延時間", wait_time_heikin/l*60, "[s]")
+print("平均出発遅延時間", wait_time_takeoff/takeoff*60, "[s]")
