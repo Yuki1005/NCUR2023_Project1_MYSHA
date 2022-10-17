@@ -12,9 +12,12 @@ arrive = 0
 wait_time_heikin = 0
 wait_time_takeoff = 0
 wait_time_arrive = 0
-G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
 
+
+G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
 pattern1 = pd.read_csv("queue_final_data.csv")
+
+
 with open("queue_final_data.csv", encoding="utf_8") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
