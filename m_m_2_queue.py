@@ -37,18 +37,19 @@ for i in range(len(pattern1)):
         print(line[i+1][0],"",line[i+1][1],"","欠航")
         data.append([str(line[i+1][0]),"",str(line[i+1][1]),"","欠航"])
     else:
-        start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
-        end_time[counter_no] = int(start_time) + int(nx.dijkstra_path_length(G,aaa,bbb) )/5.55 
+        jikan = int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 + 180
+        start_time = arrival_time
+        end_time[counter_no] = int(start_time) + jikan
         interval = end_time[counter_no] - end_time2[counter_no]
         
-        if interval < 240:
-            end_time[counter_no] = end_time2[counter_no] + 240
+        if interval < 120:
+            end_time[counter_no] = end_time2[counter_no] + 120
         else:
             end_time[counter_no] = end_time[counter_no]
         
-        wait_time = (end_time[counter_no] - int(nx.dijkstra_path_length(G,aaa,bbb))/5.55 -start_time)/60
+        wait_time = (end_time[counter_no] - jikan -start_time)/60
         big_hand = (int(end_time[counter_no]))//3600
-        little_hand = math.ceil(int(end_time[counter_no])%3600/60)+3
+        little_hand = math.ceil(int(end_time[counter_no])%3600/60)
         if little_hand >= 60:
             big_hand += 1
             little_hand = little_hand -60
@@ -67,14 +68,14 @@ for i in range(len(pattern1)):
             go_time = str(go_test//3600) + ":" + str(math.ceil(int(go_test)%3600/60))
 
 
-        data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))])
+        data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbb),runway,str(math.ceil(wait_time))])
         
         print( '{} {} {} {} {} {} {}'\
             .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
 
 data.append([])
 data.append(["平均遅延時間",wait_time_heikin/(i+1)*60,"[s]"])
-df_list = pd.DataFrame(data, columns=["定刻","出発時間","行先","ゲート番号","滑走路","滑走路到着時間","遅延"])
+df_list = pd.DataFrame(data, columns=["定刻","出発時間","行先","","ゲート番号","滑走路","滑走路到着時間","遅延"])
 df_list.to_csv("m_m_2.csv", index=False,encoding="shift_jis")
 print("平均遅延時間",wait_time_heikin/(i+1)*60,"[s]")
 
