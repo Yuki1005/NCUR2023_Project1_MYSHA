@@ -17,12 +17,17 @@ with open("and_data.csv", encoding="utf_8") as f:
 for i in range(len(pattern1)):
     aa1 = line[i+1][0].replace(":", " ").split()
     arrival_time = int(aa1[1])*60+int(aa1[0])*3600
+    
+    counter_no, mi = 0, end_time[0]
+    for j, e in enumerate(end_time[1:], 1):
+        if mi > e:
+            counter_no, mi = j, e
+    if counter_no == 0:
+        bbb = "X"
+    else:
+        bbb = "S"
 
-    if len(line[i+1][2]) == 0:
-        counter_no, mi = 0, end_time[0]
-        for j, e in enumerate(end_time[1:], 1):
-            if mi > e:
-                counter_no, mi = j, e
+    if len(str(line[i+1][2])) == 0:
         start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
         end_time[counter_no] = start_time
         interval = end_time[counter_no] - end_time2[counter_no]
@@ -32,7 +37,7 @@ for i in range(len(pattern1)):
         else:
             end_time[counter_no] = end_time[counter_no]
         big_hand = int(end_time[counter_no])//3600
-        little_hand = math.ceil(int(end_time[counter_no]) % 3600/60)+3
+        little_hand = math.ceil(int(end_time[counter_no]) % 3600/60)
         if little_hand >= 60:
             big_hand += 1
             little_hand = little_hand - 60
@@ -41,8 +46,10 @@ for i in range(len(pattern1)):
         else:
             runway = str(big_hand) + ":" + str(little_hand)
         end_time2[counter_no] = end_time[counter_no]
-          
-             
+        wait_time = math.ceil((end_time[counter_no] - arrival_time)/60)
+        
+        data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),wait_time])
+        
         
     else:
         if line[i+1][2] in ["53", "54", "55", "56", "57", "58"]:
@@ -50,23 +57,12 @@ for i in range(len(pattern1)):
         else:
             aaa = str("D" + line[i+1][2])
 
-        counter_no, mi = 0, end_time[0]
-        for j, e in enumerate(end_time[1:], 1):
-            if mi > e:
-                counter_no, mi = j, e
-
-        if counter_no == 0:
-            bbb = "X"
-        else:
-            bbb = "S"
-
         if aaa == "D100":
             print(line[i+1][0], "", line[i+1][1], "", "欠航")
             data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "欠航"])
         else:
             start_time = arrival_time if arrival_time > end_time[counter_no] else end_time[counter_no]
-            end_time[counter_no] = start_time + \
-                int(nx.dijkstra_path_length(G, aaa, bbb))/5.55
+            end_time[counter_no] = start_time + int(nx.dijkstra_path_length(G, aaa, bbb))/5.55 + 180
             interval = end_time[counter_no] - end_time2[counter_no]
 
             if interval < 120:
@@ -74,9 +70,9 @@ for i in range(len(pattern1)):
             else:
                 end_time[counter_no] = end_time[counter_no]
 
-            wait_time = (end_time[counter_no] - int(nx.dijkstra_path_length(G, aaa, bbb))/5.55 - start_time)/60
+            wait_time = (end_time[counter_no] - int(nx.dijkstra_path_length(G, aaa, bbb))/5.55 - start_time -180)/60
             big_hand = int(end_time[counter_no])//3600
-            little_hand = math.ceil(int(end_time[counter_no]) % 3600/60)+3
+            little_hand = math.ceil(int(end_time[counter_no]) % 3600/60)
             if little_hand >= 60:
                 big_hand += 1
                 little_hand = little_hand - 60
@@ -96,15 +92,15 @@ for i in range(len(pattern1)):
                 go_time = str(go_test//3600) + ":" + \
                     str(math.ceil(int(go_test) % 3600/60))
 
-            data.append([str(line[i+1][0]), str(go_time), str(line[i+1][1]),
+            data.append([str(line[i+1][0]), str(go_time), str(line[i+1][1]),"",
                         str(aaa), str(bbb), runway, str(math.ceil(wait_time))])
 
             print('{} {} {} {} {} {} {}'
-                .format(str(line[i+1][0]), str(go_time), str(line[i+1][1]), str(aaa), str(bbb), runway, str(math.ceil(wait_time))))
+                .format(str(line[i+1][0]), str(go_time), str(line[i+1][1]),"", str(aaa), str(bbb), runway, str(math.ceil(wait_time))))
 
 data.append([])
 data.append(["平均遅延時間", wait_time_heikin/(i+1)*60, "[s]"])
 df_list = pd.DataFrame(
-    data, columns=["定刻", "出発時間", "行先", "ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
+    data, columns=["定刻", "出発時間", "行先","","ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
 df_list.to_csv("and.csv", index=False, encoding="shift_jis")
 print("平均遅延時間", wait_time_heikin/(i+1)*60, "[s]")
