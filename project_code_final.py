@@ -20,6 +20,8 @@ G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
 pattern1 = pd.read_csv("project_code_final1_data.csv")
 
 def nakami():
+    global end_time
+    global end_time2
     global wait_time_heikin
     global wait_time_takeoff
     global wait_time_arrive
