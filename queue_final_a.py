@@ -147,7 +147,8 @@ for i in range(len(pattern1)):
             end_time2[counter_no] = end_time[counter_no]
             wait_time = (end_time[counter_no] - arrival_time)/60
             
-            data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),wait_time])
+            data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),str(math.ceil(wait_time))])
+            print(str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),str(math.ceil(wait_time)))
             wait_time_heikin += wait_time
             wait_time_arrive += wait_time
             l += 1
