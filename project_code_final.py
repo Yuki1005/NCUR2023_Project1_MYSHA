@@ -17,7 +17,7 @@ wait_time_arrive = 0
 kankaku = 60
 
 G = nx.read_weighted_edgelist("dijkstra_data.txt", create_using=nx.DiGraph)
-pattern1 = pd.read_csv("queue_final_data.csv")
+pattern1 = pd.read_csv("project_code_final1_data.csv")
 
 def nakami():
     global wait_time_heikin
@@ -106,7 +106,7 @@ def nakami():
                 .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
 
 
-with open("queue_final_data.csv", encoding="utf_8") as f:
+with open("project_code_final1_data.csv", encoding="utf_8") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
