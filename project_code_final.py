@@ -165,3 +165,6 @@ for i in range(len(pattern1)):
         
 df_list = pd.DataFrame(data,columns=["時間","飛行機","滑走路"])
 df_list.to_csv("project_code_final1_jikokuhyo.csv", index=False, encoding="shift_jis")
+
+
+#エネルギー消費　求める
