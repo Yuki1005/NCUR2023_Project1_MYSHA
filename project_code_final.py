@@ -155,7 +155,7 @@ with open("project_code_final1.csv", encoding="shift_jis") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
-pattern1 = pd.read_csv("project_code_final1_data.csv")
+pattern1 = pd.read_csv("project_code_final1.csv")
 for i in range(len(pattern1)):
     if len(line[i+1][1]) == 0:
         if len(line[i+1][6]) > 0:
@@ -164,4 +164,4 @@ for i in range(len(pattern1)):
         data.append([line[i+1][1],line[i+1][4],line[i+1][5]])
         
 df_list = pd.DataFrame(data,columns=["時間","飛行機","滑走路"])
-df_list.to_csv("jikokuhyo1.csv", index=False, encoding="shift_jis")
+df_list.to_csv("project_code_final1_jikokuhyo.csv", index=False, encoding="shift_jis")
