@@ -171,3 +171,5 @@ df_list.to_csv("project_code_final1_jikokuhyo.csv", index=False, encoding="shift
 #一秒に何分進むかを検討する
 #playcanvasを入れてもらってtextの表示の仕方を実際に試してもらう
 #行先が同じ機体をリストアップしてもらう
+
+#離陸の平均速度は220km/h
