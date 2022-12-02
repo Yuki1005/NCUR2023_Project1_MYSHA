@@ -167,4 +167,7 @@ df_list = pd.DataFrame(data,columns=["時間","飛行機","滑走路"])
 df_list.to_csv("project_code_final1_jikokuhyo.csv", index=False, encoding="shift_jis")
 
 
-#エネルギー消費　求める
+#csvを国際、国内線に分ける
+#一秒に何分進むかを検討する
+#playcanvasを入れてもらってtextの表示の仕方を実際に試してもらう
+#行先が同じ機体をリストアップしてもらう
