@@ -123,6 +123,10 @@ for i in range(len(pattern1)):
         
     if int(len(line[i+1][3])) > 0:
         kazamuki += 1
+        end_time[0] += 180
+        end_time[1] += 180
+        end_time2[0] += 180
+        end_time2[1] += 180
         
     if kazamuki%2 == 1:
         if counter_no == 0:
