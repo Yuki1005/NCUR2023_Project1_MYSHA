@@ -50,8 +50,8 @@ def nakami():
             end_time2[counter_no] = end_time[counter_no]
             wait_time = (end_time[counter_no] - arrival_time)/60
             
-            data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),str(math.ceil(wait_time))])
-            print(str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbb),str(runway),str(math.ceil(wait_time)))
+            data.append([str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbbb),str(runway),str(math.ceil(wait_time))])
+            print(str(line[i+1][0]), "", str(line[i+1][1]), "", "着陸",str(bbbb),str(runway),str(math.ceil(wait_time)))
             wait_time_heikin += wait_time
             wait_time_arrive += wait_time
             l += 1
@@ -103,9 +103,9 @@ def nakami():
             takeoff += 1
 
 
-            data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbb),runway,str(math.ceil(wait_time))])
+            data.append([str(line[i+1][0]),str(go_time),str(line[i+1][1]),"",str(aaa),str(bbbb),runway,str(math.ceil(wait_time))])
             print( '{} {} {} {} {} {} {}'\
-                .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbb),runway,str(math.ceil(wait_time))))
+                .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbbb),runway,str(math.ceil(wait_time))))
 
 
 with open("project_code_final1_data.csv", encoding="utf_8") as f:
@@ -127,15 +127,19 @@ for i in range(len(pattern1)):
     if kazamuki%2 == 1:
         if counter_no == 0:
             bbb = "S"
+            bbbb = "16L"
         else:
             bbb = "X"
+            bbbb = "16R"
         nakami()
         
     elif kazamuki%2 == 0:
         if counter_no == 0:
             bbb = "I"
+            bbbb = "34R"
         else:
             bbb = "AN"
+            bbbb = "34L"
         nakami()
 
 data.append([])
