@@ -28,6 +28,7 @@ def nakami():
     global l
     global takeoff
     global arrive
+    global G
     
     if len(str(line[i+1][2])) == 0:
             start_time = arrival_time
@@ -39,7 +40,7 @@ def nakami():
             else:
                 end_time[counter_no] = end_time[counter_no]
             big_hand = int(end_time[counter_no]//3600)
-            little_hand = math.ceil(end_time[counter_no] % 3600/60)
+            little_hand = math.ceil(end_time[counter_no] % 3600/6)/10
             if little_hand >= 60:
                 big_hand += 1
                 little_hand = little_hand - 60
@@ -81,7 +82,7 @@ def nakami():
                 
             wait_time = (end_time[counter_no] - jikan -start_time)/60
             big_hand = int((end_time[counter_no])//3600)
-            little_hand = math.ceil(end_time[counter_no]%3600/60)
+            little_hand = math.floor(end_time[counter_no]%3600/6)/10
             if little_hand >= 60:
                 big_hand += 1
                 little_hand = little_hand -60
@@ -94,11 +95,11 @@ def nakami():
             wait_time_heikin += wait_time
             wait_time_takeoff += wait_time
                 
-            go_test = (arrival_time +(math.ceil(wait_time)*60))
+            go_test = (arrival_time +(wait_time*60))
             if len(str(math.ceil(int(go_test)%3600/60))) == 1:
-                go_time = str(go_test//3600) + ":0" + str(math.ceil(int(go_test)%3600/60))
+                go_time = str(int(go_test)//3600) + ":0" + str(math.ceil(int(go_test)%3600/6)/10)
             else:
-                go_time = str(go_test//3600) + ":" + str(math.ceil(int(go_test)%3600/60))
+                go_time = str(int(go_test)//3600) + ":" + str(math.ceil(int(go_test)%3600/6)/10)
             l += 1
             takeoff += 1
 
