@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="rIQpAQx0PObGgsy0UetZ" name="ページ1">
-        <mxGraphModel dx="666" dy="370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1645" dy="1027" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -508,7 +508,7 @@
                 <mxCell id="237" value="go_test = (arrival_time +(math.ceil(wait_time)*60))" style="rounded=1;whiteSpace=wrap;absoluteArcSize=1;arcSize=14;strokeWidth=2;labelBackgroundColor=none;labelBorderColor=none;fontSize=12;fontColor=default;" parent="1" vertex="1">
                     <mxGeometry x="563.62" y="2780" width="154.25" height="48" as="geometry"/>
                 </mxCell>
-                <mxCell id="240" value="if len(str(math.ceil(int(go_test)%3600/60))) == 1:" style="rounded=1;whiteSpace=wrap;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=default;gradientColor=none;" vertex="1" parent="1">
+                <mxCell id="240" value="if len(str(math.ceil(int(go_test)%3600/60))) == 1:" style="rounded=1;whiteSpace=wrap;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=default;gradientColor=none;" parent="1" vertex="1">
                     <mxGeometry x="528.67" y="2840" width="219.94" height="50" as="geometry"/>
                 </mxCell>
             </root>
