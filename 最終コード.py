@@ -17,7 +17,7 @@ wait_time_arrive = 0
 kankaku = 60
 
 G = nx.read_weighted_edgelist("dijkstra_data2.txt", create_using=nx.DiGraph)
-pattern1 = pd.read_csv("project_code_final2_data.csv")
+pattern1 = pd.read_csv("離着陸データ.csv")
 
 def nakami():
     global end_time
@@ -109,7 +109,7 @@ def nakami():
                 .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbbb),runway,str(math.ceil(wait_time))))
 
 
-with open("project_code_final2_data.csv", encoding="utf_8") as f:
+with open("離着陸データ.csv", encoding="utf_8") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
@@ -153,18 +153,18 @@ data.append(["平均出発遅延時間","", wait_time_takeoff/takeoff*60, "[s]"]
 data.append(["平均到着遅延時間","", wait_time_arrive/arrive*60, "[s]"])
 df_list = pd.DataFrame(
     data, columns=["定刻", "出発時間", "行先","","ゲート番号", "滑走路", "滑走路到着時間", "遅延"])
-df_list.to_csv("project_code_final2.csv", index=False, encoding="shift_jis")
+df_list.to_csv("出力結果.csv", index=False, encoding="shift_jis")
 print("平均遅延時間", wait_time_heikin/l*60, "[s]")
 print("平均出発遅延時間", wait_time_takeoff/takeoff*60, "[s]")
 print("平均到着遅延時間", wait_time_arrive/arrive*60, "[s]")
 
 
 data = []
-with open("project_code_final2.csv", encoding="shift_jis") as f:
+with open("出力結果.csv", encoding="shift_jis") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
-pattern1 = pd.read_csv("project_code_final2.csv")
+pattern1 = pd.read_csv("出力結果.csv")
 for i in range(len(pattern1)):
     if len(line[i+1][1]) == 0:
         if len(line[i+1][6]) > 0:
@@ -173,16 +173,4 @@ for i in range(len(pattern1)):
         data.append([line[i+1][1],line[i+1][4],line[i+1][5]])
         
 df_list = pd.DataFrame(data,columns=["時間","飛行機","滑走路"])
-df_list.to_csv("project_code_final2_jikokuhyo.csv", index=False, encoding="shift_jis")
-
-
-#csvを国際、国内線に分ける
-#一秒に何分進むかを検討する
-#playcanvasを入れてもらってtextの表示の仕方を実際に試してもらう
-#行先が同じ機体をリストアップしてもらう
-#コードのフローチャート
-
-
-
-
-#離陸の平均速度は220km/h
+df_list.to_csv("時刻表.csv", index=False, encoding="shift_jis")
