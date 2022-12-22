@@ -44,7 +44,7 @@ def nakami():
             if little_hand >= 60:
                 big_hand += 1
                 little_hand = little_hand - 60
-            if len(str(little_hand)) == 1:
+            if len(str(little_hand)) == 3:
                 runway = str(big_hand) + ":0" + str(little_hand)
             else:
                 runway = str(big_hand) + ":" + str(little_hand)
@@ -86,7 +86,7 @@ def nakami():
             if little_hand >= 60:
                 big_hand += 1
                 little_hand = little_hand -60
-            if len(str(little_hand)) == 1:
+            if len(str(little_hand)) == 3:
                 runway = str(big_hand) + ":0" + str(little_hand)
             else:
                 runway = str(big_hand) + ":" + str(little_hand)
