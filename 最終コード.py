@@ -16,7 +16,7 @@ wait_time_arrive = 0
 
 kankaku = 60
 
-G = nx.read_weighted_edgelist("dijkstra_data2.txt", create_using=nx.DiGraph)
+G = nx.read_weighted_edgelist("福岡空港距離データ.txt", create_using=nx.DiGraph)
 pattern1 = pd.read_csv("離着陸データ.csv")
 
 def nakami():
