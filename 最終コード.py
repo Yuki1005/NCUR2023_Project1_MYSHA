@@ -164,7 +164,7 @@ with open("出力結果.csv", encoding="shift_jis") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
-pattern1 = pd.read_csv("出力結果.csv")
+pattern1 = pd.read_csv("出力結果.csv", encoding="shift_jis")
 for i in range(len(pattern1)):
     if len(line[i+1][1]) == 0:
         if len(line[i+1][6]) > 0:
