@@ -16,8 +16,8 @@ wait_time_arrive = 0
 
 kankaku = 60
 
-G = nx.read_weighted_edgelist("福岡空港距離データ.txt", create_using=nx.DiGraph)
-pattern1 = pd.read_csv("離着陸データ.csv")
+G = nx.read_weighted_edgelist("./src/福岡空港距離データ.txt", create_using=nx.DiGraph)
+pattern1 = pd.read_csv("./src/離着陸データ.csv")
 
 def nakami():
     global end_time
@@ -109,7 +109,7 @@ def nakami():
                 .format(str(line[i+1][0]),str(go_time),str(line[i+1][1]),str(aaa),str(bbbb),runway,str(math.ceil(wait_time))))
 
 
-with open("離着陸データ.csv", encoding="utf_8") as f:
+with open("./src/離着陸データ.csv", encoding="utf_8") as f:
     reader = csv.reader(f)
     line = [row for row in reader]
 
